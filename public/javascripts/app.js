@@ -88,7 +88,7 @@ $(() => {
           labels.forEach(label => {
             let labelItem = $('<div class=\'list-item\' />');
             
-            labelItem.text(label);
+            labelItem.text(`${label.label} - ${label.value}`);
             
             labelListElement.append(labelItem);
           });

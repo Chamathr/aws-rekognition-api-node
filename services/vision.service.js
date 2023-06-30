@@ -26,7 +26,12 @@ const visionService = async (imageFile) => {
 
     try {
         const data = await rekognitionClient.send(new DetectLabelsCommand(rekognitionParams));
-        const labels = data.Labels.map(label => label.Name);
+        const labels = data.Labels.map(label => {
+            return {
+                label: label.Name,
+                value: label.Confidence
+            }
+        });
         /*return the labels as response*/
         return labels
     } catch (error) {
